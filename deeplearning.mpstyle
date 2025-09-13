@@ -1,0 +1,30 @@
+# deeplearning.mpstyle
+
+# General settings
+figure.facecolor    : white
+axes.facecolor      : white
+axes.edgecolor      : black
+axes.grid           : True
+grid.color          : lightgray
+grid.linestyle      : --
+
+# Font
+font.size           : 12
+font.family         : sans-serif
+font.sans-serif     : Arial, DejaVu Sans, Liberation Sans
+
+# Lines
+lines.linewidth     : 2.0
+lines.markersize    : 6
+
+# Colors for plots (cycler must use correct syntax)
+axes.prop_cycle     : cycler(color=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'])
+
+# Legend
+legend.frameon      : True
+legend.facecolor    : '#f0f0f0'
+legend.edgecolor    : black
+
+# Savefig
+savefig.dpi         : 150
+savefig.facecolor   : white
