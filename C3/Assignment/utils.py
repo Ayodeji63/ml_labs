@@ -27,8 +27,14 @@ def multivariate_gaussian(X, mu, var):
     k = len(mu)
     
     if var.ndim == 1:
+        # If `var` is a simple list like `[1, 2]`, convert it to a diagonal matrix:
         var = np.diag(var)
-        
+    """
+    This is the multivariate Gaussian formula. Breaking it into 3 parts:
+    ```
+        p =  [Scaling constant]  ×  [Variance normalizer]  ×  [Bell curve shape]
+    ```
+    """  
     X = X - mu
     p = (2* np.pi)**(-k/2) * np.linalg.det(var)**(-0.5) * \
         np.exp(-0.5 * np.sum(np.matmul(X, np.linalg.pinv(var)) * X, axis=1))
@@ -41,8 +47,9 @@ def visualize_fit(X, mu, var):
     probability density function of the Gaussian distribution. Each example
     has a location (x1, x2) that depends on its feature values.
     """
-    
+    # np.meshgrid() Turns two 1D arrays into a 2D grid of coordinates. np.arange() returns evenly spaced values within a given interval.
     X1, X2 = np.meshgrid(np.arange(0, 35.5, 0.5), np.arange(0, 35.5, 0.5))
+    ## .ravel() flatten anything into 1D array. np.stack() stacks arrays in sequence along a new axis.
     Z = multivariate_gaussian(np.stack([X1.ravel(), X2.ravel()], axis=1), mu, var)
     Z = Z.reshape(X1.shape)
 
